@@ -1,0 +1,17 @@
+{
+  "name": "socioproject",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node ./src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.19.2",
+    "nodemon": "^3.1.4",
+    "sequelize": "^6.37.3"
+  }
+}
