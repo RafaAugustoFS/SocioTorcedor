@@ -1,4 +1,4 @@
-const User = require('./models/user.js');
+const User = require('../models/user.js');
 
 const UserController = {
     create: async(req, res) =>{
@@ -24,7 +24,7 @@ const UserController = {
             const { id } = req.params;
             const {nome, email, plano, cpf, phone, password} = req.body;
 
-            const userUpdate = await User.FindByPk(id);
+            const userUpdate = await User.findByPk(id);
 
             if(userUpdate === null){
                 return res.status(404).json({
@@ -37,7 +37,7 @@ const UserController = {
             })
 
             if(updated) {
-                return res(200).json({
+                return res.status(200).json({
                     msg: "Usuário atualizado com sucesso!"
                 })
             }
@@ -52,7 +52,7 @@ const UserController = {
         try {
             const usuario = await User.findAll();
 
-            return res.status(200)({
+            return res.status(200).json({
                 msg:"Usuários encontrados!",
                 users: usuario
             })
@@ -66,7 +66,7 @@ const UserController = {
     getOne: async(req, res) =>{
         try {
             const { id } = req.params;
-            const userFinded = await User.FindByPk(id);
+            const userFinded = await User.findByPk(id);
 
         if(userFinded == null){
             return res.status(500).json({
@@ -86,19 +86,28 @@ const UserController = {
         }
     },
     delete: async (req, res) => {
+        try {
             const { id } = req.params;
-            const userFinded = await User.FindByPk(id);
+            const userFinded = await User.findByPk(id);
 
-        if(userFinded == null){
+            if(userFinded == null){
+                return res.status(500).json({
+                    msg: "Usuário não existente!"
+                })
+            }
+
+            await userFinded.destroy();
+            return res.status(200).json({
+                msg: "Usuário deletado!",
+                user: userFinded
+            })
+        } catch (error) {
+            console.error(error);
             return res.status(500).json({
-                msg: "Usuário não existente!"
+                msg: "Acione o suporte!"
             })
         }
-        
-        await userFinded.destroy
-        return res.status(200).json({
-            msg: "Usuário deletado!",
-        })
+            
     }
 }
 module.exports = UserController;
