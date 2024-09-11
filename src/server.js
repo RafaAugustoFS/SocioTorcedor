@@ -9,7 +9,6 @@ app.use(express.json());
 app.use("/api", router);
 
 app.get("/healthcheck", (req, res) => {
-  // 200 -> OK
   return res.status(200).json({
     msg: "Estamos vivos!",
     alive: true,
