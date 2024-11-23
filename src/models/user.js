@@ -14,6 +14,10 @@ const User = sequelize.define('user', {
         type: DataTypes.STRING(80),
         allowNull: false
     },
+    address:{
+        type: DataTypes.STRING(200),
+        allowNull: false
+    },
     cpf: {
         type: DataTypes.STRING,
         allowNull: true
@@ -23,7 +27,7 @@ const User = sequelize.define('user', {
         allowNull: false
     },
     password: {
-        type:DataTypes.STRING(50),
+        type:DataTypes.STRING,
         allowNull:false
     }
 });
