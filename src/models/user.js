@@ -18,9 +18,14 @@ const User = sequelize.define('user', {
         type: DataTypes.STRING(200),
         allowNull: false
     },
+    data_nascimento:{
+        type: DataTypes.DATE,
+        allowNull:false
+    },
     cpf: {
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: true,
+        unique:true
     },
     phone: {
         type: DataTypes.STRING(20),

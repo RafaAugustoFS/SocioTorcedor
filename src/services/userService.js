@@ -15,6 +15,7 @@ const UserService = {
         plano: user.plano,
         address: user.address,
         cpf: user.cpf,
+        data_nascimento: user.data_nascimento,
         phone: user.phone,
         password: passwordCrypto,
       });
